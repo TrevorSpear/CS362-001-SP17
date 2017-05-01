@@ -54,13 +54,56 @@ public class TimeTableTest {
 		 calDay.addAppt(apptS);
 
 		 GregorianCalendar gCal = new GregorianCalendar();
-		 gCal.set(2000, 3, 15, 15, 15 , 15);
+		 gCal.set(2000, 3, 11, 11, 11, 11);
 
+		 GregorianCalendar goCal = new GregorianCalendar();
+		 gCal.set(2020, 5, 15, 15, 15, 15);
 
 		 TimeTable timeTable = new TimeTable();
 		 timeTable.getApptRange(calDay.getAppts(), cal, gCal);
-
+		 timeTable.getApptRange(calDay.getAppts(), cal, goCal);
+		 //timeTable.getApptRange(calDay.getAppts(), gCal, cal);
 		 timeTable.deleteAppt(calDay.getAppts(), appt);
+
+		 startHour = 10;
+		 startMinute = 10;
+		 startDay = 40;
+		 startMonth = 10;
+		 startYear = 2020;
+		 title = "Birthday Party";
+		 description = "This is my birthday party.";
+		 //Construct a new Appointment object with the initial data
+		 Appt apptY = new Appt(startHour,
+				 startMinute,
+				 startDay,
+				 startMonth,
+				 startYear,
+				 title,
+				 description);
+	
+		
+		assertEquals(null, timeTable.deleteAppt( calDay.getAppts(), apptY ) );
+		 calDay.addAppt(apptY);
+
+		 timeTable.getApptRange(calDay.getAppts(), cal, gCal);
+		// timeTable.getApptRange(calDay.getAppts(), gCal, cal);
+		
+		assertEquals(null, timeTable.deleteAppt(null, null ) );
+		assertEquals(null, timeTable.deleteAppt(calDay.getAppts(), null ) );
+		
+		startDay = 10;
+		apptY = new Appt(startHour,
+				 startMinute,
+				 startDay,
+				 startMonth,
+				 startYear,
+				 title,
+				 description);
+	
+		
+		assertEquals(null, timeTable.deleteAppt( calDay.getAppts(), apptY ) );
+		 calDay.addAppt(apptY);
+		
 	 }
 
 }

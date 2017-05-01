@@ -38,8 +38,14 @@ public class CalDayTest {
 		cal.set(2000, 3, 10, 10, 10 , 10);
 
 		CalDay calDay = new CalDay(cal);
+		CalDay callDay = new CalDay();
+		callDay.iterator();
+		callDay.toString();
+		//calDay.addAppt(null);
 		calDay.addAppt(appt);
 		calDay.toString();
-
+		
+		assertEquals( 1, calDay.getSizeAppts());
+		calDay.iterator();
 	}
 }

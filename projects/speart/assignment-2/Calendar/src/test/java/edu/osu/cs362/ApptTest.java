@@ -13,7 +13,7 @@ public class ApptTest {
      */
 	 @Test
 	  public void test01()  throws Throwable  {
-		 int startHour=13;
+		 int startHour=12;
 		 int startMinute=30;
 		 int startDay=10;
 		 int startMonth=4;
@@ -30,7 +30,7 @@ public class ApptTest {
 		         description);
 	// assertions
 		 assertTrue(appt.getValid());
-		 assertEquals(13, appt.getStartHour());
+		 assertEquals(12, appt.getStartHour());
 		 assertEquals(30, appt.getStartMinute());
 		 assertEquals(10, appt.getStartDay());
 		 assertEquals(04, appt.getStartMonth());
@@ -58,6 +58,14 @@ public class ApptTest {
 				title,
 				description);
 
+		Appt appts = new Appt(startHour,
+				startMinute ,
+				startDay ,
+				startMonth ,
+				startYear ,
+				title,
+				description);
+
 		// assertions
 		assertTrue(appt.getValid());
 
@@ -75,6 +83,23 @@ public class ApptTest {
 
 		appt.setStartYear(2019);
 		appt.toString();
+
+
+		//Under
+		appts.setStartMonth(-1);
+		assertFalse(appts.getValid());
+
+		appts.setStartDay(-1);
+		assertFalse(appts.getValid());
+
+		appts.setStartMinute(-1);
+		assertFalse(appts.getValid());
+
+		appts.setStartHour(-1);
+		assertFalse(appts.getValid());
+
+		appts.setStartYear(-1);
+
 	}
 
 
