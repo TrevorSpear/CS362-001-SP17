@@ -17,7 +17,7 @@ public class CalendarMain_ESTest {
       CalendarMain calendarMain0 = new CalendarMain();
       // Undeclared exception!
       //try {
-        //CalendarMain.main(null);
+        CalendarMain.main(stringArray0);
         //fail("Expecting exception: System.SystemExitException");
       
       //} catch(System.SystemExitException e) {
