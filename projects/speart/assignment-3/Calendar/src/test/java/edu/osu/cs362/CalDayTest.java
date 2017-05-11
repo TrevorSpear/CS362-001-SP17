@@ -3,7 +3,6 @@ package edu.osu.cs362;
  *  This class provides a basic set of test cases for the
  *  CalDay class.
  */
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -14,6 +13,8 @@ public class CalDayTest {
 	  public void test01()  throws Throwable  {
 		CalDay calDay = new CalDay();
 		assertFalse(calDay.isValid());
+
+
 	 }
 
 	@Test
@@ -38,10 +39,22 @@ public class CalDayTest {
 		cal.set(2000, 3, 10, 10, 10 , 10);
 
 		CalDay calDay = new CalDay(cal);
+		cal.set(2000, 13, 10, 10, 10 , 10);
+		CalDay callItDay = new CalDay(cal);
 		CalDay callDay = new CalDay();
+
+		calDay.getAppts();
+		calDay.getDay();
+		calDay.getMonth();
+		calDay.getYear();
+		calDay.isValid();
+
+		callItDay.iterator();
+		callItDay.toString();
+
 		callDay.iterator();
 		callDay.toString();
-		//calDay.addAppt(null);
+
 		calDay.addAppt(appt);
 		calDay.toString();
 		
