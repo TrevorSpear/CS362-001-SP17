@@ -27,7 +27,8 @@ public class ApptTest {
 		          startYear ,
 		          title,
 		         description);
-	// assertions
+
+		 // assertions
 		 assertTrue(appt.getValid());
 		 assertEquals(12, appt.getStartHour());
 		 assertEquals(30, appt.getStartMinute());
@@ -72,13 +73,25 @@ public class ApptTest {
 		appt.setStartMonth(50);
 		assertFalse(appt.getValid());
 
+		appt.setStartMonth(-1);
+		assertFalse(appt.getValid());
+
 		appt.setStartDay(50);
+		assertFalse(appt.getValid());
+
+		appt.setStartDay(-1);
 		assertFalse(appt.getValid());
 
 		appt.setStartMinute(100);
 		assertFalse(appt.getValid());
 
+		appt.setStartMinute(-1);
+		assertFalse(appt.getValid());
+
 		appt.setStartHour(50);
+		assertFalse(appt.getValid());
+
+		appt.setStartHour(-1);
 		assertFalse(appt.getValid());
 
 		appt.setStartYear(2019);

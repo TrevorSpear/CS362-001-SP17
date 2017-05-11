@@ -13,8 +13,6 @@ public class CalDayTest {
 	  public void test01()  throws Throwable  {
 		CalDay calDay = new CalDay();
 		assertFalse(calDay.isValid());
-
-
 	 }
 
 	@Test
@@ -37,8 +35,8 @@ public class CalDayTest {
 
 		GregorianCalendar cal = new GregorianCalendar();
 		cal.set(2000, 3, 10, 10, 10 , 10);
-
 		CalDay calDay = new CalDay(cal);
+
 		cal.set(2000, 13, 10, 10, 10 , 10);
 		CalDay callItDay = new CalDay(cal);
 		CalDay callDay = new CalDay();
