@@ -22,8 +22,10 @@ public class CalDayTest {
 		int startDay = 10;
 		int startMonth = 4;
 		int startYear = 2017;
+
 		String title = "Birthday Party";
 		String description = "This is my birthday party.";
+
 		//Construct a new Appointment object with the initial data
 		Appt appt = new Appt(startHour,
 				startMinute,

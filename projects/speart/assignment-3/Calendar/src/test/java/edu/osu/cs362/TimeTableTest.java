@@ -16,8 +16,10 @@ public class TimeTableTest {
 		 int startDay = 10;
 		 int startMonth = 4;
 		 int startYear = 2017;
+
 		 String title = "Birthday Party";
 		 String description = "This is my birthday party.";
+
 		 //Construct a new Appointment object with the initial data
 		 Appt appt = new Appt(startHour,
 				 startMinute,
@@ -34,6 +36,7 @@ public class TimeTableTest {
 		 startYear = 2020;
 		 title = "Birthday Party";
 		 description = "This is my birthday party.";
+
 		 //Construct a new Appointment object with the initial data
 		 Appt apptS = new Appt(startHour,
 				 startMinute,
@@ -68,6 +71,7 @@ public class TimeTableTest {
 		 startYear = 2020;
 		 title = "Birthday Party";
 		 description = "This is my birthday party.";
+
 		 //Construct a new Appointment object with the initial data
 		 Appt apptY = new Appt(startHour,
 				 startMinute,
@@ -107,8 +111,10 @@ public class TimeTableTest {
 		int startDay = 10;
 		int startMonth = 4;
 		int startYear = 2017;
+
 		String title = "Birthday Party";
 		String description = "This is my birthday party.";
+
 		//Construct a new Appointment object with the initial data
 		Appt appt = new Appt(startHour,
 				startMinute,
@@ -125,6 +131,7 @@ public class TimeTableTest {
 		startYear = 2020;
 		title = "Birthday Party";
 		description = "This is my birthday party.";
+
 		//Construct a new Appointment object with the initial data
 		Appt apptS = new Appt(startHour,
 				startMinute,
@@ -157,8 +164,10 @@ public class TimeTableTest {
 		startDay = 40;
 		startMonth = 10;
 		startYear = 2020;
+
 		title = "Birthday Party";
 		description = "This is my birthday party.";
+
 		//Construct a new Appointment object with the initial data
 		Appt apptY = new Appt(startHour,
 				startMinute,
@@ -173,7 +182,6 @@ public class TimeTableTest {
 		calDay.addAppt(apptY);
 
 		timeTable.getApptRange(calDay.getAppts(), cal, gCal);
-		// timeTable.getApptRange(calDay.getAppts(), gCal, cal);
 
 		assertEquals(null, timeTable.deleteAppt(null, null ) );
 		assertEquals(null, timeTable.deleteAppt(calDay.getAppts(), null ) );
