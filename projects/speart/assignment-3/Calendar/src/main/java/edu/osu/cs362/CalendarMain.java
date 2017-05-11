@@ -131,7 +131,7 @@ public class CalendarMain {
 			for (int i = 0; i < calDays.size(); i++)
 				System.out.println(calDays.get(i).toString());
 		}
-        System.exit(0);
+        //System.exit(0);
 		
 	}
 }
