@@ -231,9 +231,9 @@ public class CalDay_ESTest {
       Appt appt1 = new Appt(1, 0, 14, 0, 1, "\t --- 1/14/2014 --- \n --- -------- Appointments ------------ --- \n\t1/1/0 at 12:0am ,Wkm6y(_u;GfQAlch), Wkm6y(_u;GfQAlch)\n \n", "South Korea");
       linkedList0.add(appt1);
       calDay0.addAppt(appt0);
-//      assertEquals(2014, calDay0.getYear());
-  //    assertEquals(1, calDay0.getMonth());
-    //  assertEquals(14, calDay0.getDay());
+  //  assertEquals(2014, calDay0.getYear());
+  //  assertEquals(1, calDay0.getMonth());
+  //  assertEquals(14, calDay0.getDay());
   }
 
   @Test(timeout = 4000)

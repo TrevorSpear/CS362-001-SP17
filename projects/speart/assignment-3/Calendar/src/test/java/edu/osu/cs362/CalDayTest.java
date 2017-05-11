@@ -43,22 +43,22 @@ public class CalDayTest {
 		CalDay callItDay = new CalDay(cal);
 		CalDay callDay = new CalDay();
 
-		calDay.getAppts();
-		calDay.getDay();
-		calDay.getMonth();
-		calDay.getYear();
-		calDay.isValid();
+		assertNotEquals(null, calDay.getAppts());
+		assertNotEquals(null, calDay.getDay());
+		assertNotEquals(null, calDay.getMonth());
+		assertNotEquals(null, calDay.getYear());
+		assertNotEquals(null, calDay.isValid());
 
-		callItDay.iterator();
-		callItDay.toString();
+		assertNotEquals(null, callItDay.iterator());
+		assertNotEquals(null, callItDay.toString());
 
-		callDay.iterator();
-		callDay.toString();
+		assertEquals(null, callDay.iterator());
+		assertNotEquals(null, callDay.toString());
 
 		calDay.addAppt(appt);
-		calDay.toString();
+		assertNotEquals(null, calDay.toString());
 		
 		assertEquals( 1, calDay.getSizeAppts());
-		calDay.iterator();
+		assertNotEquals(null, calDay.iterator());
 	}
 }

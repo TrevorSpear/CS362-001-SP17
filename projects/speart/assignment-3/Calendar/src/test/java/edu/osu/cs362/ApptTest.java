@@ -36,7 +36,7 @@ public class ApptTest {
 		 assertEquals(2017, appt.getStartYear());
 		 assertEquals("Birthday Party", appt.getTitle());
 		 assertEquals("This is my birthday party.", appt.getDescription());
-		 appt.toString();
+		 assertNotEquals(null, appt.toString());
 	 }
 
 	@Test
@@ -66,6 +66,7 @@ public class ApptTest {
 				description);
 
 		// assertions
+		assertNotEquals(null, appt.toString());
 		assertTrue(appt.getValid());
 
 		appt.setStartMonth(50);
@@ -81,7 +82,7 @@ public class ApptTest {
 		assertFalse(appt.getValid());
 
 		appt.setStartYear(2019);
-		appt.toString();
+		assertEquals(null, appt.toString());
 
 
 		//Under
@@ -98,6 +99,8 @@ public class ApptTest {
 		assertFalse(appts.getValid());
 
 		appts.setStartYear(-1);
+		assertEquals(null, appt.toString());
+		assertEquals(null, appts.toString());
 
 	}
 

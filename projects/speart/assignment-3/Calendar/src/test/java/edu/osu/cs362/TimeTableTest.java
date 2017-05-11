@@ -8,8 +8,8 @@ import static org.junit.Assert.assertEquals;
 
 public class TimeTableTest {
 
-	 @org.junit.Test
-	  public void test01()  throws Throwable  {
+	@org.junit.Test
+	public void test01()  throws Throwable  {
 		 int startHour = 13;
 		 int startMinute = 30;
 		 int startDay = 10;
@@ -79,7 +79,7 @@ public class TimeTableTest {
 	
 		
 		assertEquals(null, timeTable.deleteAppt( calDay.getAppts(), apptY ) );
-		 calDay.addAppt(apptY);
+		calDay.addAppt(apptY);
 
 		 timeTable.getApptRange(calDay.getAppts(), cal, gCal);
 		// timeTable.getApptRange(calDay.getAppts(), gCal, cal);
@@ -98,7 +98,7 @@ public class TimeTableTest {
 	
 		
 		assertEquals(null, timeTable.deleteAppt( calDay.getAppts(), apptY ) );
-		 calDay.addAppt(apptY);
+		calDay.addAppt(apptY);
 		
 	 }
 
