@@ -4,7 +4,6 @@ package edu.osu.cs362;
  *  Appt class.
  */
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class ApptTest {
