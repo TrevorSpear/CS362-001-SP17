@@ -4,12 +4,7 @@ package edu.osu.cs362;
  * CalDay.java
  *
  */
-
-
-
 import java.util.*;
-
-
 
 /**
  * Stores all of the appointments of a single calendar day. It also

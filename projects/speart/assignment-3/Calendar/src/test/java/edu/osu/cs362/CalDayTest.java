@@ -5,10 +5,7 @@ package edu.osu.cs362;
  */
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
-
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class CalDayTest {

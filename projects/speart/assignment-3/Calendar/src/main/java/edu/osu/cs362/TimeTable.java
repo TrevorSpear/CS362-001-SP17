@@ -14,11 +14,6 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-
-
-
-
-
 public class TimeTable {
 
 	
