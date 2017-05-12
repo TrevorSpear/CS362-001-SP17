@@ -10,18 +10,9 @@ import static org.junit.Assert.*;
 import edu.osu.cs362.Appt;
 import edu.osu.cs362.CalDay;
 import edu.osu.cs362.TimeTable;
-import java.time.Clock;
-import java.time.Duration;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.Locale;
-import java.util.TimeZone;
-import org.junit.runner.RunWith;
-import sun.util.calendar.ZoneInfo;
 
 public class TimeTable_ESTest {
 
