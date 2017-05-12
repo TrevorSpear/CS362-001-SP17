@@ -44,15 +44,15 @@
 	<version>1.2.0</version>
   	 <configuration>
         <targetClasses> <!-- limit which classes are mutated -->
-            <param>edu.osu.cs362.Appt</param>
+            <!--<param>edu.osu.cs362.Appt</param>
 	    <param>edu.osu.cs362.CalDay</param>
-	    <param>edu.osu.cs362.TimeTable</param>
+	    <param>edu.osu.cs362.TimeTable</param>-->
         </targetClasses>
 			<targetTests>
 			<!--A list of your tests available to be run.-->
-			    <param>edu.osu.cs362.ApptTest</param>
+			    <!--<param>edu.osu.cs362.ApptTest</param>
 			    <param>edu.osu.cs362.CalDaytest</param>
-			    <param>edu.osu.cs362.TimeTableTest</param>
+			    <param>edu.osu.cs362.TimeTableTest</param>-->
 			</targetTests>
 			<avoidCallsTo><!--A List of packages, classes and methods which are to be considered outside the scope of mutation.-->
     				<avoidCallsTo>java.io.PrintStream</avoidCallsTo>
