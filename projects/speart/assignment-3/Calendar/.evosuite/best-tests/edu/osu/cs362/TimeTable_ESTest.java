@@ -7,6 +7,7 @@ package edu.osu.cs362;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.evosuite.runtime.EvoAssertions.*;
 import edu.osu.cs362.Appt;
 import edu.osu.cs362.CalDay;
 import edu.osu.cs362.TimeTable;
@@ -20,10 +21,17 @@ import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.Locale;
 import java.util.TimeZone;
+import org.evosuite.runtime.EvoRunner;
+import org.evosuite.runtime.EvoRunnerParameters;
+import org.evosuite.runtime.TooManyResourcesException;
+import org.evosuite.runtime.mock.java.time.MockClock;
+import org.evosuite.runtime.mock.java.time.MockZonedDateTime;
+import org.evosuite.runtime.mock.java.util.MockGregorianCalendar;
 import org.junit.runner.RunWith;
 import sun.util.calendar.ZoneInfo;
 
-public class TimeTable_ESTest {
+@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true) 
+public class TimeTable_ESTest extends TimeTable_ESTest_scaffolding {
 
   @Test(timeout = 4000)
   public void test00()  throws Throwable  {
@@ -39,19 +47,19 @@ public class TimeTable_ESTest {
   @Test(timeout = 4000)
   public void test01()  throws Throwable  {
       TimeTable timeTable0 = new TimeTable();
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(3544, 3544, 3544);
-      GregorianCalendar mockGregorianCalendar1 = new GregorianCalendar();
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(0, 0, 0);
+      MockGregorianCalendar mockGregorianCalendar1 = new MockGregorianCalendar();
       // Undeclared exception!
-      //try {
-//        timeTable0.getApptRange((LinkedList<Appt>) null, mockGregorianCalendar0, mockGregorianCalendar1);
-//        fail("Expecting exception: TooManyResourcesException");
+      try { 
+        timeTable0.getApptRange((LinkedList<Appt>) null, mockGregorianCalendar0, mockGregorianCalendar1);
+        fail("Expecting exception: TooManyResourcesException");
       
-      //} catch(TooManyResourcesException e) {
+      } catch(TooManyResourcesException e) {
          //
          // Loop has been executed more times than the allowed 10000
          //
-         //assertThrownBy("org.evosuite.runtime.LoopCounter", e);
-      //}
+         assertThrownBy("org.evosuite.runtime.LoopCounter", e);
+      }
   }
 
   @Test(timeout = 4000)
@@ -67,7 +75,7 @@ public class TimeTable_ESTest {
          //
          // no message in exception (getMessage() returned null)
          //
-         //assertThrownBy("edu.osu.cs362.TimeTable", e);
+         assertThrownBy("edu.osu.cs362.TimeTable", e);
       }
   }
 
@@ -75,10 +83,10 @@ public class TimeTable_ESTest {
   public void test03()  throws Throwable  {
       TimeTable timeTable0 = new TimeTable();
       LinkedList<Appt> linkedList0 = new LinkedList<Appt>();
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(4496, 840, 840, 5, 84, 84);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(4496, 840, 840, 5, 84, 84);
       mockGregorianCalendar0.setLenient(false);
       Locale locale0 = new Locale("D48+", "D48+", "D48+");
-      GregorianCalendar mockGregorianCalendar1 = new GregorianCalendar(locale0);
+      MockGregorianCalendar mockGregorianCalendar1 = new MockGregorianCalendar(locale0);
       // Undeclared exception!
       try { 
         timeTable0.getApptRange(linkedList0, mockGregorianCalendar0, mockGregorianCalendar1);
@@ -88,7 +96,7 @@ public class TimeTable_ESTest {
          //
          // MONTH
          //
-         //assertThrownBy("java.util.GregorianCalendar", e);
+         assertThrownBy("java.util.GregorianCalendar", e);
       }
   }
 
@@ -107,7 +115,7 @@ public class TimeTable_ESTest {
          //
          // no message in exception (getMessage() returned null)
          //
-         //assertThrownBy("edu.osu.cs362.TimeTable", e);
+         assertThrownBy("edu.osu.cs362.TimeTable", e);
       }
   }
 
@@ -163,15 +171,15 @@ public class TimeTable_ESTest {
       LinkedList<Appt> linkedList0 = new LinkedList<Appt>();
       Appt appt0 = new Appt(1, 1, 1, 1, 1, "", "");
       linkedList0.add(appt0);
-      Clock clock0 = Clock.systemUTC();
+      Clock clock0 = MockClock.systemUTC();
       ChronoUnit chronoUnit0 = ChronoUnit.MINUTES;
       Duration duration0 = chronoUnit0.getDuration();
-      Clock clock1 = Clock.tick(clock0, duration0);
-      ZonedDateTime zonedDateTime0 = ZonedDateTime.now(clock1);
-      GregorianCalendar mockGregorianCalendar0 = (GregorianCalendar)GregorianCalendar.from(zonedDateTime0);
+      Clock clock1 = MockClock.tick(clock0, duration0);
+      ZonedDateTime zonedDateTime0 = MockZonedDateTime.now(clock1);
+      MockGregorianCalendar mockGregorianCalendar0 = (MockGregorianCalendar)MockGregorianCalendar.from(zonedDateTime0);
       ZoneOffset zoneOffset0 = ZoneOffset.MAX;
       ZoneInfo zoneInfo0 = (ZoneInfo)TimeZone.getTimeZone((ZoneId) zoneOffset0);
-      GregorianCalendar mockGregorianCalendar1 = new GregorianCalendar((TimeZone) zoneInfo0);
+      MockGregorianCalendar mockGregorianCalendar1 = new MockGregorianCalendar((TimeZone) zoneInfo0);
       LinkedList<CalDay> linkedList1 = timeTable0.getApptRange(linkedList0, mockGregorianCalendar0, mockGregorianCalendar1);
       assertEquals(1, linkedList1.size());
   }
@@ -182,20 +190,20 @@ public class TimeTable_ESTest {
       LinkedList<Appt> linkedList0 = new LinkedList<Appt>();
       Appt appt0 = new Appt(2505, 2505, 2505, 2505, 2505, "", "");
       linkedList0.add(appt0);
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(2505, 2505, 2505, 2505, 2505);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(2505, 2505, 2505, 2505, 2505);
       Locale locale0 = Locale.TRADITIONAL_CHINESE;
-      GregorianCalendar mockGregorianCalendar1 = new GregorianCalendar(locale0);
-      LinkedList<CalDay> linkedList1 = timeTable0.getApptRange(linkedList0, mockGregorianCalendar1, mockGregorianCalendar0);
-      //assertEquals("org.evosuite.runtime.mock.java.util.MockGregorianCalendar[time=?,areFieldsSet=false,areAllFieldsSet=false,lenient=true,zone=sun.util.calendar.ZoneInfo[id=\"GMT\",offset=0,dstSavings=0,useDaylight=false,transitions=0,lastRule=null],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=?,YEAR=2505,MONTH=2505,WEEK_OF_YEAR=?,WEEK_OF_MONTH=?,DAY_OF_MONTH=2505,DAY_OF_YEAR=?,DAY_OF_WEEK=?,DAY_OF_WEEK_IN_MONTH=?,AM_PM=0,HOUR=2505,HOUR_OF_DAY=2505,MINUTE=2505,SECOND=0,MILLISECOND=?,ZONE_OFFSET=?,DST_OFFSET=?]", mockGregorianCalendar0.toString());
-      //assertEquals("org.evosuite.runtime.mock.java.util.MockGregorianCalendar[time=1392409281320,areFieldsSet=true,areAllFieldsSet=true,lenient=true,zone=sun.util.calendar.ZoneInfo[id=\"GMT\",offset=0,dstSavings=0,useDaylight=false,transitions=0,lastRule=null],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2014,MONTH=1,WEEK_OF_YEAR=7,WEEK_OF_MONTH=3,DAY_OF_MONTH=14,DAY_OF_YEAR=45,DAY_OF_WEEK=6,DAY_OF_WEEK_IN_MONTH=2,AM_PM=1,HOUR=8,HOUR_OF_DAY=20,MINUTE=21,SECOND=21,MILLISECOND=320,ZONE_OFFSET=0,DST_OFFSET=0]", mockGregorianCalendar1.toString());
-      //assertEquals(1, linkedList1.size());
+      MockGregorianCalendar mockGregorianCalendar1 = new MockGregorianCalendar(locale0);
+      LinkedList<CalDay> linkedList1 = timeTable0.getApptRange(linkedList0, mockGregorianCalendar0, mockGregorianCalendar1);
+      assertEquals("org.evosuite.runtime.mock.java.util.MockGregorianCalendar[time=?,areFieldsSet=false,areAllFieldsSet=false,lenient=true,zone=sun.util.calendar.ZoneInfo[id=\"GMT\",offset=0,dstSavings=0,useDaylight=false,transitions=0,lastRule=null],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=?,YEAR=2505,MONTH=2505,WEEK_OF_YEAR=?,WEEK_OF_MONTH=?,DAY_OF_MONTH=2505,DAY_OF_YEAR=?,DAY_OF_WEEK=?,DAY_OF_WEEK_IN_MONTH=?,AM_PM=0,HOUR=2505,HOUR_OF_DAY=2505,MINUTE=2505,SECOND=0,MILLISECOND=?,ZONE_OFFSET=?,DST_OFFSET=?]", mockGregorianCalendar0.toString());
+      assertEquals("org.evosuite.runtime.mock.java.util.MockGregorianCalendar[time=1392409281320,areFieldsSet=true,areAllFieldsSet=true,lenient=true,zone=sun.util.calendar.ZoneInfo[id=\"GMT\",offset=0,dstSavings=0,useDaylight=false,transitions=0,lastRule=null],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2014,MONTH=1,WEEK_OF_YEAR=7,WEEK_OF_MONTH=3,DAY_OF_MONTH=14,DAY_OF_YEAR=45,DAY_OF_WEEK=6,DAY_OF_WEEK_IN_MONTH=2,AM_PM=1,HOUR=8,HOUR_OF_DAY=20,MINUTE=21,SECOND=21,MILLISECOND=320,ZONE_OFFSET=0,DST_OFFSET=0]", mockGregorianCalendar1.toString());
+      assertEquals(1, linkedList1.size());
   }
 
   @Test(timeout = 4000)
   public void test12()  throws Throwable  {
       TimeTable timeTable0 = new TimeTable();
       LinkedList<Appt> linkedList0 = new LinkedList<Appt>();
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar();
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar();
       // Undeclared exception!
       try { 
         timeTable0.getApptRange(linkedList0, mockGregorianCalendar0, mockGregorianCalendar0);
@@ -205,7 +213,7 @@ public class TimeTable_ESTest {
          //
          // Second date specified is not before the first date specified.
          //
-         //assertThrownBy("edu.osu.cs362.TimeTable", e);
+         assertThrownBy("edu.osu.cs362.TimeTable", e);
       }
   }
 }

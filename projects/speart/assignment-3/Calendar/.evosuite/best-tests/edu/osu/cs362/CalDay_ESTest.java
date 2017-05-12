@@ -7,16 +7,20 @@ package edu.osu.cs362;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.evosuite.runtime.EvoAssertions.*;
 import edu.osu.cs362.Appt;
 import edu.osu.cs362.CalDay;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Locale;
+import org.evosuite.runtime.EvoRunner;
+import org.evosuite.runtime.EvoRunnerParameters;
+import org.evosuite.runtime.mock.java.util.MockGregorianCalendar;
 import org.junit.runner.RunWith;
 
-
-public class CalDay_ESTest {
+@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true) 
+public class CalDay_ESTest extends CalDay_ESTest_scaffolding {
 
   @Test(timeout = 4000)
   public void test00()  throws Throwable  {
@@ -26,7 +30,7 @@ public class CalDay_ESTest {
 
   @Test(timeout = 4000)
   public void test01()  throws Throwable  {
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar();
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar();
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       calDay0.getYear();
   }
@@ -41,7 +45,7 @@ public class CalDay_ESTest {
   @Test(timeout = 4000)
   public void test03()  throws Throwable  {
       Locale locale0 = Locale.TRADITIONAL_CHINESE;
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(locale0);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(locale0);
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       Appt appt0 = new Appt(2, 1, 1, 1, 0, "V>)uCRG-r6)15@]KI@", "javax.xml.datatype.Duration#isSet(DatatypeConstants.Field field)");
       calDay0.addAppt(appt0);
@@ -56,7 +60,7 @@ public class CalDay_ESTest {
 
   @Test(timeout = 4000)
   public void test05()  throws Throwable  {
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(0, 0, 0);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(0, 0, 0);
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       calDay0.month = 0;
       calDay0.month = (-573);
@@ -65,7 +69,7 @@ public class CalDay_ESTest {
 
   @Test(timeout = 4000)
   public void test06()  throws Throwable  {
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(100, 1068, 1068, 1068, (-355), 72);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(100, 1068, 1068, 1068, (-355), 72);
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       calDay0.getDay();
   }
@@ -86,7 +90,7 @@ public class CalDay_ESTest {
   @Test(timeout = 4000)
   public void test09()  throws Throwable  {
       Locale locale0 = Locale.TRADITIONAL_CHINESE;
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(locale0);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(locale0);
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       Appt appt0 = new Appt(2, 1, 1, 1, 0, "V>)uCRG-r6)15@]KI@", "javax.xml.datatype.Duration#isSet(DatatypeConstants.Field field)");
       calDay0.addAppt(appt0);
@@ -106,7 +110,7 @@ public class CalDay_ESTest {
          //
          // no message in exception (getMessage() returned null)
          //
-         //assertThrownBy("edu.osu.cs362.CalDay", e);
+         assertThrownBy("edu.osu.cs362.CalDay", e);
       }
   }
 
@@ -123,7 +127,7 @@ public class CalDay_ESTest {
          //
          // no message in exception (getMessage() returned null)
          //
-         //assertThrownBy("edu.osu.cs362.CalDay", e);
+         assertThrownBy("edu.osu.cs362.CalDay", e);
       }
   }
 
@@ -139,7 +143,7 @@ public class CalDay_ESTest {
          //
          // no message in exception (getMessage() returned null)
          //
-         //assertThrownBy("edu.osu.cs362.CalDay", e);
+         assertThrownBy("edu.osu.cs362.CalDay", e);
       }
   }
 
@@ -154,13 +158,13 @@ public class CalDay_ESTest {
          //
          // no message in exception (getMessage() returned null)
          //
-         //assertThrownBy("edu.osu.cs362.CalDay", e);
+         assertThrownBy("edu.osu.cs362.CalDay", e);
       }
   }
 
   @Test(timeout = 4000)
   public void test14()  throws Throwable  {
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(0, (-1837), (-1837), 0, 0);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(0, (-1837), (-1837), 0, 0);
       mockGregorianCalendar0.set(0, 45);
       CalDay calDay0 = null;
       try {
@@ -171,7 +175,7 @@ public class CalDay_ESTest {
          //
          // Invalid era
          //
-         //assertThrownBy("java.util.GregorianCalendar", e);
+         assertThrownBy("java.util.GregorianCalendar", e);
       }
   }
 
@@ -189,28 +193,28 @@ public class CalDay_ESTest {
 
   @Test(timeout = 4000)
   public void test17()  throws Throwable  {
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(0, 0, 0);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(0, 0, 0);
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       calDay0.getMonth();
   }
 
   @Test(timeout = 4000)
   public void test18()  throws Throwable  {
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(0, 0, 0);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(0, 0, 0);
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       calDay0.getAppts();
   }
 
   @Test(timeout = 4000)
   public void test19()  throws Throwable  {
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(0, 0, 0);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(0, 0, 0);
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       calDay0.isValid();
   }
 
   @Test(timeout = 4000)
   public void test20()  throws Throwable  {
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(0, (-1837), (-1837), 0, 0);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(0, (-1837), (-1837), 0, 0);
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       LinkedList<Appt> linkedList0 = calDay0.appts;
       Appt appt0 = new Appt(0, (-27), 1, 2, (-1837), "\t --- 10/19/160 --- \n --- -------- Appointments ------------ --- \n\n", "\t --- 10/19/160 --- \n --- -------- Appointments ------------ --- \n\n");
@@ -260,7 +264,7 @@ public class CalDay_ESTest {
 
   @Test(timeout = 4000)
   public void test25()  throws Throwable  {
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(100, 1068, 1068, 1068, (-355), 72);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(100, 1068, 1068, 1068, (-355), 72);
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       Appt appt0 = new Appt(72, (-355), 72, (-355), 100, "", "9+gV@6ymk75/*7u)");
       calDay0.addAppt(appt0);
@@ -273,7 +277,7 @@ public class CalDay_ESTest {
 
   @Test(timeout = 4000)
   public void test26()  throws Throwable  {
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(0, (-1837), (-1837), 0, 0);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(0, (-1837), (-1837), 0, 0);
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       calDay0.getSizeAppts();
       assertEquals(19, calDay0.getDay());
@@ -284,7 +288,7 @@ public class CalDay_ESTest {
 
   @Test(timeout = 4000)
   public void test27()  throws Throwable  {
-      GregorianCalendar mockGregorianCalendar0 = new GregorianCalendar(0, (-1837), (-1837), 0, 0);
+      MockGregorianCalendar mockGregorianCalendar0 = new MockGregorianCalendar(0, (-1837), (-1837), 0, 0);
       CalDay calDay0 = new CalDay((GregorianCalendar) mockGregorianCalendar0);
       Iterator<?> iterator0 = calDay0.iterator();
       assertNotNull(iterator0);
@@ -306,7 +310,7 @@ public class CalDay_ESTest {
          //
          // no message in exception (getMessage() returned null)
          //
-         //assertThrownBy("edu.osu.cs362.CalDay", e);
+         assertThrownBy("edu.osu.cs362.CalDay", e);
       }
   }
 }

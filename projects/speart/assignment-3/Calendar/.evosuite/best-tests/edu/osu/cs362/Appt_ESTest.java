@@ -8,9 +8,12 @@ package edu.osu.cs362;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import edu.osu.cs362.Appt;
+import org.evosuite.runtime.EvoRunner;
+import org.evosuite.runtime.EvoRunnerParameters;
 import org.junit.runner.RunWith;
 
-public class Appt_ESTest {
+@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true) 
+public class Appt_ESTest extends Appt_ESTest_scaffolding {
 
   @Test(timeout = 4000)
   public void test00()  throws Throwable  {
