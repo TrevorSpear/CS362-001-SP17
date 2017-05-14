@@ -13,7 +13,6 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Locale;
-import org.junit.runner.RunWith;
 
 
 public class CalDay_ESTest {

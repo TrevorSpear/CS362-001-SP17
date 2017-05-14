@@ -388,7 +388,6 @@ public class Appt_ESTest {
   public void test30()  throws Throwable  {
       Appt appt0 = new Appt(11, 1, 1, (-1078), 2907, "", "");
       assertEquals(1, appt0.getStartMinute());
-      
       appt0.setStartMinute((-1078));
       assertEquals(2907, appt0.getStartYear());
   }
