@@ -201,4 +201,47 @@ public class TimeTableTest {
 
 	}
 
+	@org.junit.Test
+	public void test03()  throws Throwable  {
+		//Construct a new Appointment object with the initial data
+		Appt appt = new Appt( 1, 1, 1, 1, 1, null, null);
+
+		//Construct a new Appointment object with the initial data
+		Appt apptS = new Appt( 1,1,1,1,1, " ", " ");
+
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.set(2000, 3, 10, 10, 10 , 15);
+
+		CalDay calDay = new CalDay(cal);
+		calDay.addAppt(appt);
+		calDay.addAppt(apptS);
+
+		GregorianCalendar gCal = new GregorianCalendar();
+		gCal.set(2000, 3, 11, 11, 11, 11);
+
+		GregorianCalendar goCal = new GregorianCalendar();
+		gCal.set(2020, 5, 15, 15, 15, 15);
+
+		TimeTable timeTable = new TimeTable();
+		assertNotEquals(null, timeTable.getApptRange(calDay.getAppts(), cal, gCal));
+		assertNotEquals(null, timeTable.getApptRange(calDay.getAppts(), cal, goCal));
+		assertNotEquals(null, timeTable.deleteAppt(calDay.getAppts(), appt));
+
+		//Construct a new Appointment object with the initial data
+		Appt apptY = new Appt(100, 100, 100, 100, 100, "a", "a");
+
+
+		assertEquals(null, timeTable.deleteAppt( calDay.getAppts(), apptY ) );
+		calDay.addAppt(apptY);
+
+		assertNotEquals(null, timeTable.getApptRange(calDay.getAppts(), cal, gCal));
+		assertEquals(null, timeTable.deleteAppt(null, null ) );
+		assertEquals(null, timeTable.deleteAppt(calDay.getAppts(), null ) );
+
+		apptY = new Appt( -1, -1, -1, -1, -1, "lol", "not today");
+
+		assertEquals(null, timeTable.deleteAppt( calDay.getAppts(), apptY ) );
+		calDay.addAppt(apptY);
+	}
+
 }

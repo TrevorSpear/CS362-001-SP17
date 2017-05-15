@@ -18,6 +18,8 @@ public class CalDayTest {
 		assertFalse(calDay.isValid());
 	 }
 
+
+
 	@Test
 	public void test02()  throws Throwable {
 		int startHour = 13;
@@ -65,8 +67,10 @@ public class CalDayTest {
 		assertNotEquals(null, calDay.iterator());
 	}
 
-	@Test(timeout = 4000)
-	public void test03()  throws Throwable  {
+
+
+	@Test
+	public void test03()  throws Throwable {
 		CalDay calDay0 = new CalDay();
 		calDay0.isValid();
 
@@ -128,11 +132,16 @@ public class CalDayTest {
 		calDay0.getMonth();
 		calDay0.getAppts();
 		calDay0.isValid();
+	}
 
-		GregorianCalendar0 = new GregorianCalendar(0, (-1837), (-1837), 0, 0);
-		calDay0 = new CalDay(GregorianCalendar0);
+
+
+	@Test
+	public void test04()  throws Throwable  {
+		GregorianCalendar GregorianCalendar0 = new GregorianCalendar(0, (-1837), (-1837), 0, 0);
+		CalDay calDay0 = new CalDay(GregorianCalendar0);
 		LinkedList<Appt> linkedList0 = calDay0.appts;
-		appt0 = new Appt(0, (-27), 1, 2, (-1837), "test", "");
+		Appt appt0 = new Appt(0, (-27), 1, 2, (-1837), "test", "");
 		linkedList0.add(appt0);
 		String string0 = calDay0.toString();
 		assertEquals("\t --- 10/19/160 --- \n --- -------- Appointments ------------ --- \nnull \n", string0);
