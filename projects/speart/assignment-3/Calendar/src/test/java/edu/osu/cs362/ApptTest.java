@@ -123,21 +123,21 @@ public class ApptTest {
 
 	@Test
 	public void test03()  throws Throwable  {
-		Appt appt0 = new Appt(1, 1, 1, 11, 11, "Trial", "test");
+		Appt appt0 = new Appt(1, 1, 1, 1, 1, "Trial", "test");
 		String string0 = appt0.toString();
-		assertEquals("\t11/1/11 at 1:1am ,Trial, test\n", string0);
+		assertEquals("\t1/1/1 at 1:1am ,Trial, test\n", string0);
 		assertNotNull(string0);
 		assertEquals(1, appt0.getStartDay());
-		appt0.setStartDay(31);
-		assertEquals(31, appt0.getStartDay());
+		appt0.setStartDay(25);
+		assertEquals(25, appt0.getStartDay());
 		assertEquals(1, appt0.getStartMinute());
 		assertEquals("test", appt0.getDescription());
-		assertEquals(11, appt0.getStartYear());
+		assertEquals(1, appt0.getStartYear());
 		assertEquals("Trial", appt0.getTitle());
 		assertEquals(1, appt0.getStartHour());
-		assertEquals(11, appt0.getStartMonth());
-		appt0.setStartMinute(818);
-		assertEquals(818, appt0.getStartMinute());
+		assertEquals(1, appt0.getStartMonth());
+		appt0.setStartMinute(750);
+		assertEquals(750, appt0.getStartMinute());
 
 		appt0 = new Appt(0, 0, 0, 0, 0, (String) null, (String) null);
 		string0 = appt0.getTitle();
@@ -149,26 +149,26 @@ public class ApptTest {
 		assertNotNull(string0);
 		assertEquals(0, appt0.getStartYear());
 
-		appt0 = new Appt(109, 109, 12, 109, 12, "test", "testing");
+		appt0 = new Appt(150, 150, 15, 150, 15, "test", "testing");
 		int int0 = appt0.getStartYear();
 		assertEquals("test", appt0.getTitle());
-		assertEquals(12, int0);
+		assertEquals(15, int0);
 		assertFalse(appt0.getValid());
-		assertEquals(12, appt0.getStartDay());
-		assertEquals(109, appt0.getStartMinute());
-		assertEquals(109, appt0.getStartHour());
+		assertEquals(15, appt0.getStartDay());
+		assertEquals(150, appt0.getStartMinute());
+		assertEquals(150, appt0.getStartHour());
 		assertEquals("testing", appt0.getDescription());
-		assertEquals(109, appt0.getStartMonth());
+		assertEquals(150, appt0.getStartMonth());
 
-		appt0 = new Appt((-79), 2328, (-79), (-709), (-709), "time testing", "description");
+		appt0 = new Appt((-69), 2500, (-69), (-69), (-69), "time testing", "description");
 		int0 = appt0.getStartYear();
-		assertEquals(-79, appt0.getStartHour());
-		assertEquals(-709, appt0.getStartMonth());
-		assertEquals(2328, appt0.getStartMinute());
+		assertEquals(-69, appt0.getStartHour());
+		assertEquals(-69, appt0.getStartMonth());
+		assertEquals(2500, appt0.getStartMinute());
 		assertFalse(appt0.getValid());
-		assertEquals((-709), int0);
+		assertEquals((-69), int0);
 		assertEquals("time testing", appt0.getTitle());
-		assertEquals(-79, appt0.getStartDay());
+		assertEquals(-69, appt0.getStartDay());
 		assertEquals("description", appt0.getDescription());
 
 		appt0 = new Appt((-1), (-1), (-1), 0, 0, "The test", "the description");
@@ -182,146 +182,135 @@ public class ApptTest {
 		assertEquals(0, int0);
 		assertEquals(-1, appt0.getStartDay());
 
-		appt0 = new Appt(0, 59, 59, 59, 23, "test", "descript");
+		appt0 = new Appt(69, 69, 69, 69, 69, "test", "descript");
 		int0 = appt0.getStartMonth();
-		assertEquals(59, appt0.getStartDay());
-		assertEquals(59, appt0.getStartMinute());
-		assertEquals(23, appt0.getStartYear());
-		assertEquals(59, int0);
-		assertEquals(0, appt0.getStartHour());
+		assertEquals(69, appt0.getStartDay());
+		assertEquals(69, appt0.getStartMinute());
+		assertEquals(69, appt0.getStartYear());
+		assertEquals(69, int0);
+		assertEquals(69, appt0.getStartHour());
 		assertFalse(appt0.getValid());
 	}
 
-	@Test(timeout = 4000)
+	@Test
 	public void test04()  throws Throwable  {
-		Appt appt0 = new Appt((-538), (-538), (-538), (-538), 0, (String) null, (String) null);
+		Appt appt0 = new Appt((-500), (-500), (-500), (-500), 0, (String) null, (String) null);
 		int int0 = appt0.getStartMinute();
-		assertEquals(-538, appt0.getStartMonth());
-		assertEquals(-538, appt0.getStartHour());
-		assertEquals((-538), int0);
-		assertEquals(-538, appt0.getStartDay());
+		assertEquals(-500, appt0.getStartMonth());
+		assertEquals(-500, appt0.getStartHour());
+		assertEquals((-500), int0);
+		assertEquals(-500, appt0.getStartDay());
 		assertEquals(0, appt0.getStartYear());
 		assertFalse(appt0.getValid());
 
-		appt0 = new Appt(0, 0, 2714, (-1030), (-1030), "z", "z");
+		appt0 = new Appt(0, 0, 2500, (-1500), (-1500), "z", "z");
 		int0 = appt0.getStartHour();
 		assertEquals(0, appt0.getStartMinute());
-		assertEquals(2714, appt0.getStartDay());
+		assertEquals(2500, appt0.getStartDay());
 		assertFalse(appt0.getValid());
-		assertEquals(-1030, appt0.getStartYear());
-		assertEquals(-1030, appt0.getStartMonth());
+		assertEquals(-1500, appt0.getStartYear());
+		assertEquals(-1500, appt0.getStartMonth());
 		assertEquals(0, int0);
 		assertEquals("z", appt0.getDescription());
 		assertEquals("z", appt0.getTitle());
 
-		appt0 = new Appt(1, 1, 1, 11, 11, "BasketBall is awesome to play with friends", "");
-		int0 = appt0.getStartDay();
-		assertEquals(1, appt0.getStartMinute());
-		assertEquals(1, int0);
-		assertEquals("", appt0.getDescription());
-		assertTrue(appt0.getValid());
-		assertEquals(11, appt0.getStartYear());
-		assertEquals(11, appt0.getStartMonth());
-		assertEquals("BasketBall is awesome to play with friends", appt0.getTitle());
-		assertEquals(1, appt0.getStartHour());
-
-		appt0 = new Appt((-599), (-599), (-599), (-599), (-599), "", "");
+		appt0 = new Appt((-500), (-500), (-500), (-500), (-500), "", "");
 		appt0.getDescription();
 		assertFalse(appt0.getValid());
-		assertEquals(-599, appt0.getStartDay());
-		assertEquals(-599, appt0.getStartMinute());
-		assertEquals(-599, appt0.getStartMonth());
-		assertEquals(-599, appt0.getStartYear());
-		assertEquals(-599, appt0.getStartHour());
+		assertEquals(-500, appt0.getStartDay());
+		assertEquals(-500, appt0.getStartMinute());
+		assertEquals(-500, appt0.getStartMonth());
+		assertEquals(-500, appt0.getStartYear());
+		assertEquals(-500, appt0.getStartHour());
 	}
 
-	@Test(timeout = 4000)
+	@Test
 	public void test05()  throws Throwable  {
-		Appt appt0 = new Appt((-1078), 744, 3973, (-1078), 3973, "", "");
+		Appt appt0 = new Appt((-1500), 750, 2500, (-1500), 2500, "", "");
 		appt0.setDescription("");
-		assertEquals(3973, appt0.getStartYear());
+		assertEquals(2500, appt0.getStartYear());
 		assertFalse(appt0.getValid());
-		assertEquals(744, appt0.getStartMinute());
-		assertEquals(-1078, appt0.getStartMonth());
-		assertEquals(3973, appt0.getStartDay());
-		assertEquals(-1078, appt0.getStartHour());
+		assertEquals(750, appt0.getStartMinute());
+		assertEquals(-1500, appt0.getStartMonth());
+		assertEquals(2500, appt0.getStartDay());
+		assertEquals(-1500, appt0.getStartHour());
 
-		appt0 = new Appt(0, 0, (-2371), 0, (-2686), (String) null, (String) null);
+		appt0 = new Appt(0, 0, (-2500), 0, (-2500), (String) null, (String) null);
 		appt0.setDescription((String) null);
 		assertEquals(0, appt0.getStartMinute());
 		assertEquals(0, appt0.getStartMonth());
-		assertEquals(-2371, appt0.getStartDay());
+		assertEquals(-2500, appt0.getStartDay());
 		assertFalse(appt0.getValid());
-		assertEquals(-2686, appt0.getStartYear());
+		assertEquals(-2500, appt0.getStartYear());
 		assertEquals(0, appt0.getStartHour());
 
-		appt0 = new Appt(0, 0, 316, 316, 316, "/", "/");
+		appt0 = new Appt(0, 0, 250, 250, 250, "/", "/");
 		appt0.setTitle("/");
-		assertEquals(316, appt0.getStartYear());
+		assertEquals(250, appt0.getStartYear());
 		assertEquals("/", appt0.getDescription());
-		assertEquals(316, appt0.getStartDay());
+		assertEquals(250, appt0.getStartDay());
 		assertEquals("/", appt0.getTitle());
 		assertEquals(0, appt0.getStartMinute());
 		assertEquals(0, appt0.getStartHour());
 		assertFalse(appt0.getValid());
-		assertEquals(316, appt0.getStartMonth());
+		assertEquals(250, appt0.getStartMonth());
 
-		appt0 = new Appt((-538), (-538), (-538), (-538), 0, (String) null, (String) null);
+		appt0 = new Appt((-500), (-500), (-500), (-500), 0, (String) null, (String) null);
 		appt0.setTitle((String) null);
-		assertEquals(-538, appt0.getStartDay());
-		assertEquals(-538, appt0.getStartMonth());
-		assertEquals(-538, appt0.getStartHour());
+		assertEquals(-500, appt0.getStartDay());
+		assertEquals(-500, appt0.getStartMonth());
+		assertEquals(-500, appt0.getStartHour());
 		assertEquals(0, appt0.getStartYear());
-		assertEquals(-538, appt0.getStartMinute());
+		assertEquals(-500, appt0.getStartMinute());
 		assertFalse(appt0.getValid());
 
-		appt0 = new Appt(0, 0, 316, 316, 316, "/", "/");
+		appt0 = new Appt(0, 0, 250, 250, 250, "/", "/");
 		String string0 = appt0.getDescription();
-		assertEquals(316, appt0.getStartYear());
+		assertEquals(250, appt0.getStartYear());
 		assertEquals(0, appt0.getStartHour());
 		assertFalse(appt0.getValid());
-		assertEquals(316, appt0.getStartMonth());
+		assertEquals(250, appt0.getStartMonth());
 		assertEquals("/", string0);
 		assertEquals("/", appt0.getTitle());
 		assertEquals(0, appt0.getStartMinute());
-		assertEquals(316, appt0.getStartDay());
+		assertEquals(250, appt0.getStartDay());
 
-		appt0 = new Appt(12, 12, 12, (-1023), (-1023), "Dogs are awesome", "Cats are too");
-		assertEquals(-1023, appt0.getStartMonth());
+		appt0 = new Appt(15, 15, 15, (-1500), (-1500), "Dogs are awesome", "Cats are too");
+		assertEquals(-1500, appt0.getStartMonth());
 
-		appt0.setStartMonth(12);
+		appt0.setStartMonth(15);
 		string0 = appt0.toString();
-		assertEquals("\t12/12/-1023 at 12:12pm ,Dogs are awesome, Cats are too\n", string0);
+		assertNull(string0);
 
-		appt0 = new Appt(23, 23, 23, 23, 23, "", "");
-		assertEquals(23, appt0.getStartMonth());
-		assertEquals(23, appt0.getStartDay());
-		assertEquals(23, appt0.getStartMinute());
-		assertEquals(23, appt0.getStartYear());
-		assertEquals(23, appt0.getStartHour());
+		appt0 = new Appt(25, 25, 25, 25, 25, "", "");
+		assertEquals(25, appt0.getStartMonth());
+		assertEquals(25, appt0.getStartDay());
+		assertEquals(25, appt0.getStartMinute());
+		assertEquals(25, appt0.getStartYear());
+		assertEquals(25, appt0.getStartHour());
 		assertFalse(appt0.getValid());
 
-		appt0 = new Appt((-413), (-413), (-413), -1984, 0, "Tennis is fun", "Football is too");
+		appt0 = new Appt((-500), (-500), (-500), -500, 0, "Tennis is fun", "Football is too");
 		int int0 = appt0.getStartYear();
 		assertFalse(appt0.getValid());
 		assertEquals(0, int0);
-		assertEquals(-413, appt0.getStartMinute());
+		assertEquals(-500, appt0.getStartMinute());
 		assertEquals("Tennis is fun", appt0.getTitle());
-		assertEquals(-413, appt0.getStartHour());
-		assertEquals(-1984, appt0.getStartMonth());
+		assertEquals(-500, appt0.getStartHour());
+		assertEquals(-500, appt0.getStartMonth());
 		assertEquals("Football is too", appt0.getDescription());
-		assertEquals(-413, appt0.getStartDay());
+		assertEquals(-500, appt0.getStartDay());
 
-		appt0 = new Appt(11, 1, 1, (-1078), 2907, "", "");
-		assertEquals(11, appt0.getStartHour());
-		assertEquals(2907, appt0.getStartYear());
-		assertEquals(1, appt0.getStartDay());
-		assertEquals(1, appt0.getStartMinute());
-		assertEquals(-1078, appt0.getStartMonth());
+		appt0 = new Appt(15, 15, 15, (-2500), 2500, "", "");
+		assertEquals(15, appt0.getStartHour());
+		assertEquals(2500, appt0.getStartYear());
+		assertEquals(15, appt0.getStartDay());
+		assertEquals(15, appt0.getStartMinute());
+		assertEquals(-2500, appt0.getStartMonth());
 		string0 = appt0.toString();
 		assertFalse(appt0.getValid());
 		appt0.setStartMonth(1);
-		appt0.setStartYear((-1078));
+		appt0.setStartYear((-500));
 	}
 	
 }

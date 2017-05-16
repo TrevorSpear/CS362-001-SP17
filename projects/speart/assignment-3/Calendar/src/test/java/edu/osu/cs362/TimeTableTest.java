@@ -228,7 +228,7 @@ public class TimeTableTest {
 		assertNotEquals(null, timeTable.deleteAppt(calDay.getAppts(), appt));
 
 		//Construct a new Appointment object with the initial data
-		Appt apptY = new Appt(100, 100, 100, 100, 100, "a", "a");
+		Appt apptY = new Appt(150, 150, 150, 150, 150, "a", "a");
 
 
 		assertEquals(null, timeTable.deleteAppt( calDay.getAppts(), apptY ) );

@@ -88,15 +88,15 @@ public class CalDayTest {
 		GregorianCalendar0 = new GregorianCalendar(0, 0, 0);
 		calDay0 = new CalDay(GregorianCalendar0);
 		calDay0.month = 0;
-		calDay0.month = (-573);
+		calDay0.month = (-750);
 		calDay0.getMonth();
 
-		GregorianCalendar0 = new GregorianCalendar(100, 1068, 1068, 1068, (-355), 72);
+		GregorianCalendar0 = new GregorianCalendar(100, 1500, 1500, 1500, (-250), 75);
 		calDay0 = new CalDay(GregorianCalendar0);
 		calDay0.getDay();
 
 		calDay0 = new CalDay();
-		calDay0.day = (-133);
+		calDay0.day = (-175);
 		calDay0.getDay();
 
 		calDay0 = new CalDay();
@@ -105,7 +105,7 @@ public class CalDayTest {
 		Locale locale0 = Locale.TRADITIONAL_CHINESE;
 		GregorianCalendar0 = new GregorianCalendar(locale0);
 		calDay0 = new CalDay(GregorianCalendar0);
-		Appt appt0 = new Appt(2, 1, 1, 1, 0, "test", "Testing");
+		Appt appt0 = new Appt(1, 1, 1, 1, 0, "test", "Testing");
 		calDay0.addAppt(appt0);
 		calDay0.getSizeAppts();
 		calDay0.addAppt(appt0);
@@ -138,13 +138,13 @@ public class CalDayTest {
 
 	@Test
 	public void test04()  throws Throwable  {
-		GregorianCalendar GregorianCalendar0 = new GregorianCalendar(0, (-1837), (-1837), 0, 0);
+		GregorianCalendar GregorianCalendar0 = new GregorianCalendar(0, (-1500), (-1500), 0, 0);
 		CalDay calDay0 = new CalDay(GregorianCalendar0);
 		LinkedList<Appt> linkedList0 = calDay0.appts;
-		Appt appt0 = new Appt(0, (-27), 1, 2, (-1837), "test", "");
+		Appt appt0 = new Appt(0, (-25), 1, 2, (-1500), "test", "");
 		linkedList0.add(appt0);
 		String string0 = calDay0.toString();
-		assertEquals("\t --- 10/19/160 --- \n --- -------- Appointments ------------ --- \nnull \n", string0);
+		assertEquals("\t --- 10/22/131 --- \n --- -------- Appointments ------------ --- \nnull \n", string0);
 
 		calDay0 = new CalDay();
 		string0 = calDay0.toString();
@@ -157,9 +157,9 @@ public class CalDayTest {
 		calDay0 = new CalDay();
 		linkedList0 = new LinkedList<Appt>();
 		calDay0.appts = linkedList0;
-		appt0 = new Appt(1, 17, 1375, 17, 1, "The stuff to life", "Is at your doorstep");
+		appt0 = new Appt(1, 15, 1500, 15, 1, "The stuff to life", "Is at your doorstep");
 		linkedList0.add(appt0);
-		Appt appt1 = new Appt(0, 0, 17, 1, 0, "a ", "a");
+		Appt appt1 = new Appt(0, 0, 15, 1, 0, "a ", "a");
 		calDay0.addAppt(appt1);
 		calDay0.addAppt(appt1);
 		assertEquals(3, calDay0.getSizeAppts());
@@ -167,36 +167,36 @@ public class CalDayTest {
 		calDay0 = new CalDay();
 		linkedList0 = new LinkedList<Appt>();
 		calDay0.appts = linkedList0;
-		appt0 = new Appt((-3659), (-1), 5, 57, 3630, "b ", "b");
+		appt0 = new Appt((-2500), (-1), 15, 69, 2500, "b ", "b");
 		linkedList0.add(appt0);
-		appt1 = new Appt(0, 0, 1, 1, 44, "c ", "c");
+		appt1 = new Appt(0, 0, 1, 1, 75, "c ", "c");
 		calDay0.addAppt(appt1);
 		assertEquals(2, calDay0.getSizeAppts());
 
-		GregorianCalendar0 = new GregorianCalendar(100, 1068, 1068, 1068, (-355), 72);
+		GregorianCalendar0 = new GregorianCalendar(100, 1500, 1500, 1500, (-250), 72);
 		calDay0 = new CalDay(GregorianCalendar0);
-		appt0 = new Appt(72, (-355), 72, (-355), 100, "or is it at your backdoor", "One must look to find their own life or be stuck with what they have ");
+		appt0 = new Appt(75, (-250), 75, (-250), 150, "or is it at your backdoor", "One must look to find their own life or be stuck with what they have ");
 		calDay0.addAppt(appt0);
 		assertTrue(calDay0.isValid());
-		assertEquals(192, calDay0.getYear());
-		assertEquals(0, calDay0.getMonth());
-		assertEquals(17, calDay0.getDay());
+		assertEquals(229, calDay0.getYear());
+		assertEquals(3, calDay0.getMonth());
+		assertEquals(11, calDay0.getDay());
 		assertEquals(0, calDay0.getSizeAppts());
 
-		GregorianCalendar0 = new GregorianCalendar(0, (-1837), (-1837), 0, 0);
+		GregorianCalendar0 = new GregorianCalendar(0, (-1500), (-1500), 0, 0);
 		calDay0 = new CalDay(GregorianCalendar0);
 		calDay0.getSizeAppts();
-		assertEquals(19, calDay0.getDay());
-		assertEquals(160, calDay0.getYear());
+		assertEquals(22, calDay0.getDay());
+		assertEquals(131, calDay0.getYear());
 		assertEquals(10, calDay0.getMonth());
 		assertTrue(calDay0.isValid());
 
-		GregorianCalendar0 = new GregorianCalendar(0, (-1837), (-1837), 0, 0);
+		GregorianCalendar0 = new GregorianCalendar(0, (-1500), (-1500), 0, 0);
 		calDay0 = new CalDay(GregorianCalendar0);
 		iterator0 = calDay0.iterator();
 		assertNotNull(iterator0);
-		assertEquals(160, calDay0.getYear());
-		assertEquals(19, calDay0.getDay());
+		assertEquals(131, calDay0.getYear());
+		assertEquals(22, calDay0.getDay());
 		assertEquals(10, calDay0.getMonth());
 	}
 }
