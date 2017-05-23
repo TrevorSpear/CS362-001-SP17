@@ -23,7 +23,7 @@ public class TimeTableRandomTest {
 	 @Test
 	  public void radnomtest()  throws Throwable  {
 
-		 for(int i = 0; i < 1000; i++) {
+		 for(int i = 0; i < 200; i++) {
 			 Random random = new Random();
 
 			 Appt appt = new Appt(

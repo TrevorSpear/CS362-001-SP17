@@ -79,27 +79,87 @@ public class ApptRandomTest {
 
 
 		Random random = new Random();
+
+		 //hour
 		Appt appt = new Appt(
-				ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+				ValuesGenerator.getRandomIntBetween(random, 25, 240), //hour
 				ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
 				ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
-				ValuesGenerator.getRandomIntBetween(random, 13, 100), //month
+				ValuesGenerator.getRandomIntBetween(random, 13, 12), //month
 				ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
 				ValuesGenerator.getString(random), //title
 				ValuesGenerator.getString(random) //description
 		);
-
 		 appt = new Appt(
-				 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+				 ValuesGenerator.getRandomIntBetween(random, -100, -1), //hour
 				 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
-				 ValuesGenerator.getRandomIntBetween(random, 31, 300), //Day
+				 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
 				 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
 				 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
 				 ValuesGenerator.getString(random), //title
 				 ValuesGenerator.getString(random) //description
 		 );
 
-	 
+		 //min
+		 appt = new Appt(
+				 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+				 ValuesGenerator.getRandomIntBetween(random, 60, 600), //min
+				 ValuesGenerator.getRandomIntBetween(random, 11, 30), //Day
+				 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+				 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+				 ValuesGenerator.getString(random), //title
+				 ValuesGenerator.getString(random) //description
+		 );
+		 appt = new Appt(
+				 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+				 ValuesGenerator.getRandomIntBetween(random, -100, -1), //min
+				 ValuesGenerator.getRandomIntBetween(random, 11, 30), //Day
+				 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+				 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+				 ValuesGenerator.getString(random), //title
+				 ValuesGenerator.getString(random) //description
+		 );
+
+		 //Day
+		 appt = new Appt(
+				 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+				 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
+				 ValuesGenerator.getRandomIntBetween(random, 32, 300), //Day
+				 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+				 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+				 ValuesGenerator.getString(random), //title
+				 ValuesGenerator.getString(random) //description
+		 );
+		 appt = new Appt(
+				 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+				 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
+				 ValuesGenerator.getRandomIntBetween(random, -100, -1), //Day
+				 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+				 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+				 ValuesGenerator.getString(random), //title
+				 ValuesGenerator.getString(random) //description
+		 );
+
+		 //month
+		 appt = new Appt(
+				 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+				 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
+				 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
+				 ValuesGenerator.getRandomIntBetween(random, 13, 120), //month
+				 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+				 ValuesGenerator.getString(random), //title
+				 ValuesGenerator.getString(random) //description
+		 );
+		 appt = new Appt(
+				 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+				 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
+				 ValuesGenerator.getRandomIntBetween(random, 11, 30), //Day
+				 ValuesGenerator.getRandomIntBetween(random, -100, -1), //month
+				 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+				 ValuesGenerator.getString(random), //title
+				 ValuesGenerator.getString(random) //description
+		 );
+
 	 
 		 System.out.println("Done testing...");
 	 }
