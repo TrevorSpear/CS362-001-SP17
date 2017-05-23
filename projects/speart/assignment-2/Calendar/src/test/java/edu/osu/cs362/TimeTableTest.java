@@ -4,8 +4,7 @@ package edu.osu.cs362;
  *  TimeTable class.
  */
 import java.util.GregorianCalendar;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class TimeTableTest {
 

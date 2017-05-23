@@ -1,10 +1,14 @@
 package container;
 
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
+import java.util.HashSet;
 import java.util.Random;
 
-public class ContainerRandomTest {
+public class ContainerRandom2Test {
 	private static final int MAX_VALUE=10;
 	private static final int NUM_TESTS=10;
     public static int RandInt(Random random){
@@ -21,29 +25,41 @@ public class ContainerRandomTest {
 	@Test 
 	public void test() {
 		System.out.println("Start testing...");
-		for (int k = 0; k < 100; k++) {
+		for (int k = 0; k < 1000000; k++) {
 
 			Container c = new Container();
+			HashSet<Integer> ref=new HashSet<Integer>();
+
 			long randomseed = System.currentTimeMillis();
 			Random random = new Random(randomseed);
 
 			for (int i = 0; i < NUM_TESTS; i++) {
-				String methodName = ContainerRandomTest.RandMethod(random);
+				String methodName = ContainerRandom2Test.RandMethod(random);
 		
-					int n = ContainerRandomTest.RandInt(random);
+					int n = ContainerRandom2Test.RandInt(random);
 
 				   if (methodName.equals("put")){
-						int r=c.put(n);
+						int r1=c.put(n);
+						int r2= ref.add(n)?1:0;
+						assertEquals(r2, r1); 
+						
 					}
 					else if (methodName.equals("get")){
-						int r=c.get(n);
+						int r1=c.get(n);
+						int r2= ref.contains(n)?1:0;
+						 assertEquals(r2, r1);
 					}
 					else if (methodName.equals("remove")){
 					//	c.printContainer();
-						int r=c.remove(n);
+						int r1=c.remove(n);
+						int r2= ref.remove(n)?1:0;
+						 assertEquals(r2, r1);
 					}
 					else if (methodName.equals("size")){
-						int r=c.size();
+						int r1=c.size();
+						int r2= ref.size();
+						 assertEquals(r2, r1);
+						
 					}
 		//				c.printContainer();
 			}
@@ -56,3 +72,4 @@ public class ContainerRandomTest {
 	
 
 }
+
