@@ -2,10 +2,7 @@ package edu.osu.cs362;
 
 import java.util.Calendar;
 import java.util.Random;
-
 import org.junit.Test;
-
-
 import static org.junit.Assert.*;
 
 
@@ -22,7 +19,7 @@ public class ApptRandomTest {
 	 * Return a randomly selected method to be tests !.
 	 */
     public static String RandomSelectMethod(Random random){
-        String[] methodArray = new String[] {"setTitle","setDescription"};// The list of the of methods to be tested in the Appt class
+        String[] methodArray = new String[] {"setTitle","setDescription","hour","min","day","month"};// The list of the of methods to be tested in the Appt class
 
     	int n = random.nextInt(methodArray.length);// get a random number between 0 (inclusive) and  methodArray.length (exclusive)
     	            
@@ -64,9 +61,96 @@ public class ApptRandomTest {
 					 description);
 			 for (int i = 0; i < NUM_TESTS; i++) {
 				 String methodName = ApptRandomTest.RandomSelectMethod(random);
+				 random = new Random();
 				 if (methodName.equals("setTitle")) {
 					 String newTitle = (String) ValuesGenerator.getString(random);
 					 appt.setTitle(newTitle);
+				 } else if ( methodName.equals("hour") ) {
+					 //System.out.println("hour");
+					 //hour
+					 appt = new Appt(
+							 ValuesGenerator.getRandomIntBetween(random, 25, 240), //hour
+							 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
+							 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
+							 ValuesGenerator.getRandomIntBetween(random, 13, 12), //month
+							 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+							 ValuesGenerator.getString(random), //title
+							 ValuesGenerator.getString(random) //description
+					 );
+					 appt = new Appt(
+							 ValuesGenerator.getRandomIntBetween(random, -100, -1), //hour
+							 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
+							 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
+							 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+							 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+							 ValuesGenerator.getString(random), //title
+							 ValuesGenerator.getString(random) //description
+					 );
+				 } else if ( methodName.equals("min") ) {
+					 //System.out.println("min");
+					 //min
+					 appt = new Appt(
+							 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
+							 ValuesGenerator.getRandomIntBetween(random, 60, 600), //min
+							 ValuesGenerator.getRandomIntBetween(random, 11, 30), //Day
+							 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+							 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+							 ValuesGenerator.getString(random), //title
+							 ValuesGenerator.getString(random) //description
+					 );
+					 appt = new Appt(
+							 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
+							 ValuesGenerator.getRandomIntBetween(random, -100, -1), //min
+							 ValuesGenerator.getRandomIntBetween(random, 11, 30), //Day
+							 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+							 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+							 ValuesGenerator.getString(random), //title
+							 ValuesGenerator.getString(random) //description
+					 );
+
+				 } else if ( methodName.equals("day") ) {
+					 //System.out.println("day");
+					 //Day
+					 appt = new Appt(
+							 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
+							 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
+							 ValuesGenerator.getRandomIntBetween(random, 32, 300), //Day
+							 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+							 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+							 ValuesGenerator.getString(random), //title
+							 ValuesGenerator.getString(random) //description
+					 );
+					 appt = new Appt(
+							 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
+							 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
+							 ValuesGenerator.getRandomIntBetween(random, -100, -1), //Day
+							 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+							 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+							 ValuesGenerator.getString(random), //title
+							 ValuesGenerator.getString(random) //description
+					 );
+
+				 } else if ( methodName.equals("month") ) {
+					 //System.out.println("month");
+					 //month
+					 appt = new Appt(
+							 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
+							 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
+							 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
+							 ValuesGenerator.getRandomIntBetween(random, 13, 120), //month
+							 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+							 ValuesGenerator.getString(random), //title
+							 ValuesGenerator.getString(random) //description
+					 );
+					 appt = new Appt(
+							 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
+							 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
+							 ValuesGenerator.getRandomIntBetween(random, 11, 30), //Day
+							 ValuesGenerator.getRandomIntBetween(random, -100, -1), //month
+							 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+							 ValuesGenerator.getString(random), //title
+							 ValuesGenerator.getString(random) //description
+					 );
 				 }
 
 			 }
@@ -74,89 +158,6 @@ public class ApptRandomTest {
 			 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
 			 if ((iteration % 10000) == 0 && iteration != 0)
 				 System.out.println("elapsed time: " + elapsed + " of " + TestTimeout);
-
-
-			 random = new Random();
-
-			 //hour
-			 appt = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 25, 240), //hour
-					 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
-					 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
-					 ValuesGenerator.getRandomIntBetween(random, 13, 12), //month
-					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
-					 ValuesGenerator.getString(random), //title
-					 ValuesGenerator.getString(random) //description
-			 );
-			 appt = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, -100, -1), //hour
-					 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
-					 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
-					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
-					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
-					 ValuesGenerator.getString(random), //title
-					 ValuesGenerator.getString(random) //description
-			 );
-
-			 //min
-			 appt = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
-					 ValuesGenerator.getRandomIntBetween(random, 60, 600), //min
-					 ValuesGenerator.getRandomIntBetween(random, 11, 30), //Day
-					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
-					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
-					 ValuesGenerator.getString(random), //title
-					 ValuesGenerator.getString(random) //description
-			 );
-			 appt = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
-					 ValuesGenerator.getRandomIntBetween(random, -100, -1), //min
-					 ValuesGenerator.getRandomIntBetween(random, 11, 30), //Day
-					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
-					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
-					 ValuesGenerator.getString(random), //title
-					 ValuesGenerator.getString(random) //description
-			 );
-
-			 //Day
-			 appt = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
-					 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
-					 ValuesGenerator.getRandomIntBetween(random, 32, 300), //Day
-					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
-					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
-					 ValuesGenerator.getString(random), //title
-					 ValuesGenerator.getString(random) //description
-			 );
-			 appt = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
-					 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
-					 ValuesGenerator.getRandomIntBetween(random, -100, -1), //Day
-					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
-					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
-					 ValuesGenerator.getString(random), //title
-					 ValuesGenerator.getString(random) //description
-			 );
-
-			 //month
-			 appt = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
-					 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
-					 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
-					 ValuesGenerator.getRandomIntBetween(random, 13, 120), //month
-					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
-					 ValuesGenerator.getString(random), //title
-					 ValuesGenerator.getString(random) //description
-			 );
-			 appt = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
-					 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
-					 ValuesGenerator.getRandomIntBetween(random, 11, 30), //Day
-					 ValuesGenerator.getRandomIntBetween(random, -100, -1), //month
-					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
-					 ValuesGenerator.getString(random), //title
-					 ValuesGenerator.getString(random) //description
-			 );
 
 		 }
 	 

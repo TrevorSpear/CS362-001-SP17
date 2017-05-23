@@ -16,14 +16,32 @@ import static org.junit.Assert.*;
  */
 
 public class TimeTableRandomTest {
-	
+
+	private static final long TestTimeout = 60 * 500 * 1; /* Timeout at 30 seconds */
+	private static final int NUM_TESTS=100;
+
+	/**
+	 * Return a randomly selected method to be tests !.
+	 */
+	public static String RandomSelectMethod(Random random){
+		String[] methodArray = new String[] {"delete","Range"};// The list of the of methods to be tested in the Appt class
+
+		int n = random.nextInt(methodArray.length);// get a random number between 0 (inclusive) and  methodArray.length (exclusive)
+
+		return methodArray[n] ; // return the method name
+	}
+
     /**
      * Generate Random Tests that tests TimeTable Class.
      */
 	 @Test
 	  public void radnomtest()  throws Throwable  {
 
-		 for(int i = 0; i < 200; i++) {
+		 long startTime = Calendar.getInstance().getTimeInMillis();
+		 long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
+
+		 System.out.println("Start testing...");
+		 for (int iteration = 0; elapsed < TestTimeout; iteration++) {
 			 Random random = new Random();
 
 			 Appt appt = new Appt(
@@ -36,13 +54,22 @@ public class TimeTableRandomTest {
 					 ValuesGenerator.getString(random) //description
 			 );
 
-			 //Construct a new Appointment object with the initial data
 			 Appt apptS = new Appt(
 					 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
 					 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
 					 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
 					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
 					 ValuesGenerator.getRandomIntBetween(random, 2100, 2120),
+					 ValuesGenerator.getString(random), //title
+					 ValuesGenerator.getString(random) //description
+			 );
+
+			 Appt apptY = new Appt(
+					 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+					 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
+					 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
+					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
 					 ValuesGenerator.getString(random), //title
 					 ValuesGenerator.getString(random) //description
 			 );
@@ -56,10 +83,6 @@ public class TimeTableRandomTest {
 					 ValuesGenerator.getRandomIntBetween(random, 1, 60), 			//minute
 					 ValuesGenerator.getRandomIntBetween(random, 1, 60)     		//second
 			 );
-
-			 CalDay calDay = new CalDay(cal);
-			 calDay.addAppt(appt);
-			 calDay.addAppt(apptS);
 
 			 GregorianCalendar gCal = new GregorianCalendar();
 			 gCal.set(
@@ -82,42 +105,47 @@ public class TimeTableRandomTest {
 			 );
 
 			 TimeTable timeTable = new TimeTable();
-			 timeTable.getApptRange(calDay.getAppts(), cal, gCal);
-			 timeTable.getApptRange(calDay.getAppts(), cal, goCal);
-			 timeTable.deleteAppt(calDay.getAppts(), appt);
+			 CalDay calDay = new CalDay(cal);
+			 calDay.addAppt(appt);
+			 calDay.addAppt(apptS);
 
-			 //Construct a new Appointment object with the initial data
-			 Appt apptY = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
-					 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
-					 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
-					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
-					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
-					 ValuesGenerator.getString(random), //title
-					 ValuesGenerator.getString(random) //description
-			 );
+			 String methodName = TimeTableRandomTest.RandomSelectMethod(random);
+			 if (methodName.equals("Range")) {
+				 //Get Range
+				 timeTable.getApptRange(calDay.getAppts(), cal, gCal);
+				 timeTable.getApptRange(calDay.getAppts(), cal, goCal);
+
+			 }else if (methodName.equals("delete")) {
+				 //Testing delete
+				 timeTable.deleteAppt(calDay.getAppts(), appt);
+				 assertEquals(null, timeTable.deleteAppt(calDay.getAppts(), apptY));
+				 calDay.addAppt(apptY);
+				 timeTable.getApptRange(calDay.getAppts(), cal, gCal);
+
+				 assertEquals(null, timeTable.deleteAppt(null, null));
+				 assertEquals(null, timeTable.deleteAppt(calDay.getAppts(), null));
+
+				 apptY = new Appt(
+						 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+						 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
+						 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
+						 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+						 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+						 ValuesGenerator.getString(random), //title
+						 ValuesGenerator.getString(random) //description
+				 );
+
+				 assertEquals(null, timeTable.deleteAppt(calDay.getAppts(), apptY));
+
+			 }
+
+			 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
+			 System.out.println("elapsed time: " + elapsed + " of " + TestTimeout);
 
 
-			 assertEquals(null, timeTable.deleteAppt(calDay.getAppts(), apptY));
-			 calDay.addAppt(apptY);
-			 timeTable.getApptRange(calDay.getAppts(), cal, gCal);
 
-			 assertEquals(null, timeTable.deleteAppt(null, null));
-			 assertEquals(null, timeTable.deleteAppt(calDay.getAppts(), null));
-
-			 apptY = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
-					 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
-					 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
-					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
-					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
-					 ValuesGenerator.getString(random), //title
-					 ValuesGenerator.getString(random) //description
-			 );
-
-
-			 assertEquals(null, timeTable.deleteAppt(calDay.getAppts(), apptY));
-			 calDay.addAppt(apptY);
 		 }
+
+		 System.out.println("Done testing...");
 	 }
 }
