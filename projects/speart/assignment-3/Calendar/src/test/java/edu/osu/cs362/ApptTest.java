@@ -42,6 +42,45 @@ public class ApptTest {
 		 assertNotEquals(null, appt.toString());
 	 }
 
+	/*@Test
+	public void testRemoveAll()  throws Throwable  {
+	 	SimpleArrayList List = new SimpleArrayList();
+
+	 	List.Add(5);
+	 	List.Add(100);
+	 	List.removeAll(5);
+	 	assertEquals(100, List.get(0));
+
+	 	List.Add(100);
+	 	List.Add(100);
+		List.removeAll(100);
+		assertTrue(List.isEmpty());
+
+		List.add(20);
+		List.removeAll(5);
+		assertEquals(20, List.get(0));
+	}
+
+	@Test
+	public void testisEmpty()  throws Throwable  {
+		SimpleArrayList List = new SimpleArrayList();
+
+		List.Add(5);
+		assertFalse(List.isEmpty());
+
+		List.removeAll(5);
+		assertTrue(List.isEmpty());
+
+		List.Add(100);
+		List.Add(100);
+		assertFalse(List.isEmpty());
+
+		List.removeAll(100);
+		assertTrue(List.isEmpty());
+	}*/
+
+
+
 	@Test
 	public void test02()  throws Throwable  {
 		int startHour=13;
