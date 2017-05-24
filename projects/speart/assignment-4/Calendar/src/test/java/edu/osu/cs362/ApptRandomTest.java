@@ -77,6 +77,8 @@ public class ApptRandomTest {
 							 ValuesGenerator.getString(random), //title
 							 ValuesGenerator.getString(random) //description
 					 );
+					 assertEquals(false, appt.getValid());
+
 					 appt = new Appt(
 							 ValuesGenerator.getRandomIntBetween(random, -100, -1), //hour
 							 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
@@ -86,6 +88,8 @@ public class ApptRandomTest {
 							 ValuesGenerator.getString(random), //title
 							 ValuesGenerator.getString(random) //description
 					 );
+					 assertEquals(false, appt.getValid());
+
 				 } else if ( methodName.equals("min") ) {
 					 //System.out.println("min");
 					 //min
@@ -98,6 +102,8 @@ public class ApptRandomTest {
 							 ValuesGenerator.getString(random), //title
 							 ValuesGenerator.getString(random) //description
 					 );
+					 assertEquals(false, appt.getValid());
+
 					 appt = new Appt(
 							 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
 							 ValuesGenerator.getRandomIntBetween(random, -100, -1), //min
@@ -107,6 +113,7 @@ public class ApptRandomTest {
 							 ValuesGenerator.getString(random), //title
 							 ValuesGenerator.getString(random) //description
 					 );
+					 assertEquals(false, appt.getValid());
 
 				 } else if ( methodName.equals("day") ) {
 					 //System.out.println("day");
@@ -120,6 +127,8 @@ public class ApptRandomTest {
 							 ValuesGenerator.getString(random), //title
 							 ValuesGenerator.getString(random) //description
 					 );
+					 assertEquals(false, appt.getValid());
+
 					 appt = new Appt(
 							 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
 							 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
@@ -129,6 +138,7 @@ public class ApptRandomTest {
 							 ValuesGenerator.getString(random), //title
 							 ValuesGenerator.getString(random) //description
 					 );
+					 assertEquals(false, appt.getValid());
 
 				 } else if ( methodName.equals("month") ) {
 					 //System.out.println("month");
@@ -142,6 +152,8 @@ public class ApptRandomTest {
 							 ValuesGenerator.getString(random), //title
 							 ValuesGenerator.getString(random) //description
 					 );
+					 assertEquals(false, appt.getValid());
+
 					 appt = new Appt(
 							 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
 							 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
@@ -151,6 +163,8 @@ public class ApptRandomTest {
 							 ValuesGenerator.getString(random), //title
 							 ValuesGenerator.getString(random) //description
 					 );
+					 assertEquals(false, appt.getValid());
+
 				 }
 
 			 }

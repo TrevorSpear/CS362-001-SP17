@@ -3,12 +3,8 @@ package edu.osu.cs362;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
-
 import org.junit.Test;
-
-
 import static org.junit.Assert.*;
-
 
 
 /**
@@ -45,7 +41,7 @@ public class TimeTableRandomTest {
 			 Random random = new Random();
 
 			 Appt appt = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+					 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
 					 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
 					 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
 					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
@@ -55,7 +51,7 @@ public class TimeTableRandomTest {
 			 );
 
 			 Appt apptS = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+					 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
 					 ValuesGenerator.getRandomIntBetween(random, 1, 60), //min
 					 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
 					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
@@ -65,7 +61,7 @@ public class TimeTableRandomTest {
 			 );
 
 			 Appt apptY = new Appt(
-					 ValuesGenerator.getRandomIntBetween(random, 1, 24), //hour
+					 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
 					 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
 					 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
 					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month

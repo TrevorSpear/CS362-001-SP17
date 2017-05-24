@@ -106,7 +106,7 @@ public class UrlValidator implements Serializable {
      */
     private static final String URL_REGEX =
             "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?";
-    //                                                                      12            3  4          5       6   7        8 9
+    //        12            3  4          5       6   7        8 9
     private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
 
     /**
@@ -262,8 +262,8 @@ public class UrlValidator implements Serializable {
             if (schemes == null) {
                 schemes = DEFAULT_SCHEMES;
             }
-            this.allowedSchemes = new HashSet();
-            this.allowedSchemes.addAll(Arrays.asList(schemes));
+            this.allowedSchemes = new HashSet();//<--Here
+            this.allowedSchemes.addAll(Arrays.asList(schemes));//<--Here
         }
 
         this.authorityValidator = authorityValidator;
@@ -282,7 +282,7 @@ public class UrlValidator implements Serializable {
             return false;
         }
 
-        if (!ASCII_PATTERN.matcher(value).matches()) {
+        if (!ASCII_PATTERN.matcher(value).matches()) {//<--Here
             return false;
         }
 
@@ -298,7 +298,7 @@ public class UrlValidator implements Serializable {
         }
 
         String authority = urlMatcher.group(PARSE_URL_AUTHORITY);
-        if ("file".equals(scheme) && "".equals(authority)) {
+        if ("file".equals(scheme) && "".equals(authority)) {//<--Here
            // Special case - file: allows an empty authority
         } else {
            // Validate the authority
@@ -369,7 +369,7 @@ public class UrlValidator implements Serializable {
             }
         }
 
-        Matcher authorityMatcher = AUTHORITY_PATTERN.matcher(authority);
+        Matcher authorityMatcher = AUTHORITY_PATTERN.matcher(authority);//<--Here
         if (!authorityMatcher.matches()) {
             return false;
         }
@@ -377,6 +377,7 @@ public class UrlValidator implements Serializable {
         String hostLocation = authorityMatcher.group(PARSE_AUTHORITY_HOST_IP);
         // check if authority is hostname or IP address:
         // try a hostname first since that's much more likely
+        //<--Here //<--Here //<--Here
         DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));
         if (!domainValidator.isValid(hostLocation)) {
             // try an IP address
@@ -416,7 +417,7 @@ public class UrlValidator implements Serializable {
         if (!PATH_PATTERN.matcher(path).matches()) {
             return false;
         }
-
+        //<--Here
         int slash2Count = countToken("//", path);
         if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
             return false;
@@ -501,4 +502,7 @@ public class UrlValidator implements Serializable {
     private boolean isOff(long flag) {
         return (this.options & flag) == 0;
     }
+
+
+    //<--Here
 }
