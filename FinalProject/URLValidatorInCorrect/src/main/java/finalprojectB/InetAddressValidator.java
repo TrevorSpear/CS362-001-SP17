@@ -61,7 +61,7 @@ public class InetAddressValidator implements Serializable {
      */
     public boolean isValid(String inetAddress) {
         
-    	return isValidInet4Address(inetAddress);
+    	return isValidInet4Address(inetAddress);//<--Here but for something for 6Address not 4
     	
     }
 
@@ -77,8 +77,8 @@ public class InetAddressValidator implements Serializable {
         if (groups == null) return false;
 
         // verify that address subgroups are legal
-        for (int i = 0; i <= 3; i++) {
-            String ipSegment = groups[i];
+        for (int i = 0; i <= 3; i++) {//<--Here
+            String ipSegment = groups[i];//<--Here
             if (ipSegment == null || ipSegment.length() <= 0) {
                 return false;
             }
@@ -91,9 +91,9 @@ public class InetAddressValidator implements Serializable {
                 return false;
             }
 
-            if (iIpSegment > 255) {
+            if (iIpSegment > 255) {//<--Here  ****
                 
-            	return true;
+            	return true;//<--Here ****
             	
             }
 

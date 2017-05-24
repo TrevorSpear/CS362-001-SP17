@@ -54,7 +54,7 @@ import java.util.regex.Matcher;
  * @version $Revision: 1227719 $ $Date: 2012-01-05 09:45:51 -0800 (Thu, 05 Jan 2012) $
  * @since Validator 1.4
  */
-public class RegexValidator implements Serializable {
+public class RegexValidator implements Serializable {  //<--Completely the same
 
     private static final long serialVersionUID = -8832409930574867162L;
 

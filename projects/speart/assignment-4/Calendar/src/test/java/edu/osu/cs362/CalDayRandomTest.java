@@ -57,6 +57,20 @@ public class CalDayRandomTest {
 
 			 CalDay calDay = new CalDay(cal);
 
+			 Appt appt = new Appt(
+					 ValuesGenerator.getRandomIntBetween(random, 1, 23), //hour
+					 ValuesGenerator.getRandomIntBetween(random, 1, 59), //min
+					 ValuesGenerator.getRandomIntBetween(random, 1, 30), //Day
+					 ValuesGenerator.getRandomIntBetween(random, 1, 12), //month
+					 ValuesGenerator.getRandomIntBetween(random, 2000, 2050),
+					 ValuesGenerator.getString(random), //title
+					 ValuesGenerator.getString(random) //description
+			 );
+
+			 calDay.addAppt(appt);
+
+			 assertEquals(calDay.getSizeAppts(), 1);
+
 			 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
 			 if ((iteration % 10000) == 0 && iteration != 0)
 				 System.out.println("elapsed time: " + elapsed + " of " + TestTimeout);
