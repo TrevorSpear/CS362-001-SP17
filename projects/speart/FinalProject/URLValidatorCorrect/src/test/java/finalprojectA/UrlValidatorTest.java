@@ -84,51 +84,96 @@ public class UrlValidatorTest extends TestCase {
     * @param testObjects Used to create a url.
     */
    public void testIsValid(Object[] testObjects, long options) {
+       //gets UrlValidator
       UrlValidator urlVal = new UrlValidator(null, null, options);
+      //two obvious true statements
       assertTrue(urlVal.isValid("http://www.google.com"));
       assertTrue(urlVal.isValid("http://www.google.com/"));
+
+       assertTrue(urlVal.isValid("http://www.google.com:1"));
+       assertTrue(urlVal.isValid("http://www.google.com:20"));
+       assertTrue(urlVal.isValid("http://www.google.com:300"));
+       assertTrue(urlVal.isValid("http://www.google.com:4000"));
+       assertTrue(urlVal.isValid("http://www.google.com:0?6"));
+       assertTrue(urlVal.isValid("http://255.255.255.255"));
+
+
+
+       //sets up ints
       int statusPerLine = 60;
       int printed = 0;
+
+      //If print index is true sets status per line to 6
+       //Status per a line is going through each section on the url and saying true or false
       if (printIndex)  {
          statusPerLine = 6;
       }
+
+
       do {
+
+
          StringBuffer testBuffer = new StringBuffer();
          boolean expected = true;
+
+        //5 times?
          for (int testPartsIndexIndex = 0; testPartsIndexIndex < testPartsIndex.length; ++testPartsIndexIndex) {
+             //Makes index = to int array at location
             int index = testPartsIndex[testPartsIndexIndex];
+
+            //
             ResultPair[] part = (ResultPair[]) testObjects[testPartsIndexIndex];
             testBuffer.append(part[index].item);
             expected &= part[index].valid;
          }
+
+
          //System.out.println(testPartsIndex[0]);
          String url = testBuffer.toString();
          boolean result = urlVal.isValid(url);
-         
-         if(result == true)
+
+
+         //if(result == true)
         	 System.out.println(url);
+
+
          assertEquals(url, expected, result);
          
          if (printStatus) {
+
+
             if (printIndex) {
                //System.out.print(testPartsIndextoString());
             } else {
+
                if (result == expected) {
+                   //If results come out to the expected (then adds a)  print "."
                   System.out.print('.');
+
                } else {
+                   //If results aren't the expected then prints a "X"
                   System.out.print('X');
                }
+                //System.out.println("\n HERE \n");
             }
+
             printed++;
+
             if (printed == statusPerLine) {
                System.out.println();
                printed = 0;
             }
+
          }
+
+
       } while (incrementTestPartsIndex(testPartsIndex, testObjects));
+
+      //Adds a newline character to the last printed out line
       if (printStatus) {
          System.out.println();
       }
+
    }
 
    public void testValidator202() {
@@ -182,6 +227,8 @@ public class UrlValidatorTest extends TestCase {
 
     public void testValidator288() {
         UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
+
+        assertTrue(validator.isValid("http://local"));
 
         assertTrue("hostname should validate",
                 validator.isValid("http://hostname"));
@@ -339,6 +386,7 @@ public class UrlValidatorTest extends TestCase {
     * all of which must be individually valid for the entire URL to be considered
     * valid.
     */
+   //9
    ResultPair[] testUrlScheme = {new ResultPair("http://", true),
                                new ResultPair("ftp://", true),
                                new ResultPair("h3t://", true),
@@ -347,8 +395,9 @@ public class UrlValidatorTest extends TestCase {
                                new ResultPair("http:", false),
                                new ResultPair("http/", false),
                                new ResultPair("://", false),
-                               new ResultPair("", true)};
-
+                               new ResultPair("", true)
+   };
+    //19
    ResultPair[] testUrlAuthority = {new ResultPair("www.google.com", true),
                                   new ResultPair("go.com", true),
                                   new ResultPair("go.au", true),
@@ -369,6 +418,7 @@ public class UrlValidatorTest extends TestCase {
                                   new ResultPair("aaa", false),
                                   new ResultPair("", false)
    };
+   //7
    ResultPair[] testUrlPort = {new ResultPair(":80", true),
                              new ResultPair(":65535", true),
                              new ResultPair(":0", true),
@@ -377,6 +427,7 @@ public class UrlValidatorTest extends TestCase {
                              new ResultPair(":65636", true),
                              new ResultPair(":65a", false)
    };
+   //10
    ResultPair[] testPath = {new ResultPair("/test1", true),
                           new ResultPair("/t123", true),
                           new ResultPair("/$23", true),
@@ -389,6 +440,7 @@ public class UrlValidatorTest extends TestCase {
                           new ResultPair("/test1//file", false)
    };
    //Test allow2slash, noFragment
+    //15
    ResultPair[] testUrlPathOptions = {new ResultPair("/test1", true),
                                     new ResultPair("/t123", true),
                                     new ResultPair("/$23", true),
@@ -406,20 +458,23 @@ public class UrlValidatorTest extends TestCase {
                                     new ResultPair("/#/file", false)
    };
 
+    //3
    ResultPair[] testUrlQuery = {new ResultPair("?action=view", true),
-                              new ResultPair("?action=edit&mode=up", true),
-                              new ResultPair("", true)
-   };
+            new ResultPair("?action=edit&mode=up", true),
+            new ResultPair("", true)
+    };
+    //9 19 7 10 3
+    Object[] testUrlParts = {testUrlScheme, testUrlAuthority, testUrlPort, testPath, testUrlQuery};
+    Object[] testUrlPartsOptions = {testUrlScheme, testUrlAuthority, testUrlPort, testUrlPathOptions, testUrlQuery};
+    int[] testPartsIndex = {0, 0, 0, 0, 0};
 
-   Object[] testUrlParts = {testUrlScheme, testUrlAuthority, testUrlPort, testPath, testUrlQuery};
-   Object[] testUrlPartsOptions = {testUrlScheme, testUrlAuthority, testUrlPort, testUrlPathOptions, testUrlQuery};
-   int[] testPartsIndex = {0, 0, 0, 0, 0};
-
-   //---------------- Test data for individual url parts ----------------
-   ResultPair[] testScheme = {new ResultPair("http", true),
-                            new ResultPair("ftp", false),
-                            new ResultPair("httpd", false),
-                            new ResultPair("telnet", false)};
+    //---------------- Test data for individual url parts ----------------
+    //4
+    ResultPair[] testScheme = {new ResultPair("http", true),
+            new ResultPair("ftp", false),
+            new ResultPair("httpd", false),
+            new ResultPair("telnet", false)
+    };
 
 
 }
