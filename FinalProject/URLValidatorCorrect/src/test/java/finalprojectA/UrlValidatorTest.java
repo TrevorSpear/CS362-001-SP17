@@ -90,7 +90,16 @@ public class UrlValidatorTest extends TestCase {
       assertTrue(urlVal.isValid("http://www.google.com"));
       assertTrue(urlVal.isValid("http://www.google.com/"));
 
-      //sets up ints
+       assertTrue(urlVal.isValid("http://www.google.com:1"));
+       assertTrue(urlVal.isValid("http://www.google.com:20"));
+       assertTrue(urlVal.isValid("http://www.google.com:300"));
+       assertTrue(urlVal.isValid("http://www.google.com:4000"));
+       assertTrue(urlVal.isValid("http://www.google.com:0?6"));
+       assertTrue(urlVal.isValid("http://255.255.255.255"));
+
+
+
+       //sets up ints
       int statusPerLine = 60;
       int printed = 0;
 
@@ -218,6 +227,8 @@ public class UrlValidatorTest extends TestCase {
 
     public void testValidator288() {
         UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
+
+        assertTrue(validator.isValid("http://local"));
 
         assertTrue("hostname should validate",
                 validator.isValid("http://hostname"));
@@ -449,21 +460,21 @@ public class UrlValidatorTest extends TestCase {
 
     //3
    ResultPair[] testUrlQuery = {new ResultPair("?action=view", true),
-                              new ResultPair("?action=edit&mode=up", true),
-                              new ResultPair("", true)
-   };
+            new ResultPair("?action=edit&mode=up", true),
+            new ResultPair("", true)
+    };
     //9 19 7 10 3
-   Object[] testUrlParts = {testUrlScheme, testUrlAuthority, testUrlPort, testPath, testUrlQuery};
-   Object[] testUrlPartsOptions = {testUrlScheme, testUrlAuthority, testUrlPort, testUrlPathOptions, testUrlQuery};
-   int[] testPartsIndex = {0, 0, 0, 0, 0};
+    Object[] testUrlParts = {testUrlScheme, testUrlAuthority, testUrlPort, testPath, testUrlQuery};
+    Object[] testUrlPartsOptions = {testUrlScheme, testUrlAuthority, testUrlPort, testUrlPathOptions, testUrlQuery};
+    int[] testPartsIndex = {0, 0, 0, 0, 0};
 
-   //---------------- Test data for individual url parts ----------------
+    //---------------- Test data for individual url parts ----------------
     //4
-   ResultPair[] testScheme = {new ResultPair("http", true),
-                            new ResultPair("ftp", false),
-                            new ResultPair("httpd", false),
-                            new ResultPair("telnet", false)
-   };
+    ResultPair[] testScheme = {new ResultPair("http", true),
+            new ResultPair("ftp", false),
+            new ResultPair("httpd", false),
+            new ResultPair("telnet", false)
+    };
 
 
 }
