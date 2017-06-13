@@ -106,7 +106,7 @@ public class UrlValidator implements Serializable {
      */
     private static final String URL_REGEX =
             "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?";
-    //                                                                      12            3  4          5       6   7        8 9
+    //        12            3  4          5       6   7        8 9
     private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
 
     /**
@@ -155,7 +155,7 @@ public class UrlValidator implements Serializable {
     private static final String LEGAL_ASCII_REGEX = "^\\p{ASCII}+$";
     private static final Pattern ASCII_PATTERN = Pattern.compile(LEGAL_ASCII_REGEX);
 
-    private static final String PORT_REGEX = "^:(\\d{1,3})$";
+    private static final String PORT_REGEX = "^:(\\d{1,3})$"; // BUG ----------------------------------------
     private static final Pattern PORT_PATTERN = Pattern.compile(PORT_REGEX);
 
     /**
@@ -416,7 +416,7 @@ public class UrlValidator implements Serializable {
         if (!PATH_PATTERN.matcher(path).matches()) {
             return false;
         }
-
+        //<--Here
         int slash2Count = countToken("//", path);
         if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
             return false;
@@ -443,7 +443,7 @@ public class UrlValidator implements Serializable {
             return true;
         }
         
-        return !QUERY_PATTERN.matcher(query).matches();
+        return !QUERY_PATTERN.matcher(query).matches(); // BUG ----------------------------------------
     }
 
     /**
@@ -501,4 +501,5 @@ public class UrlValidator implements Serializable {
     private boolean isOff(long flag) {
         return (this.options & flag) == 0;
     }
+
 }

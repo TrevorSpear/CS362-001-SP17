@@ -132,8 +132,7 @@ public class UrlValidator implements Serializable {
     private static final String SCHEME_REGEX = "^\\p{Alpha}[\\p{Alnum}\\+\\-\\.]*";
     private static final Pattern SCHEME_PATTERN = Pattern.compile(SCHEME_REGEX);
 
-    private static final String AUTHORITY_REGEX =
-            "^([" + AUTHORITY_CHARS_REGEX + "]*)(:\\d*)?(.*)?";
+    private static final String AUTHORITY_REGEX = "^([" + AUTHORITY_CHARS_REGEX + "]*)(:\\d*)?(.*)?";
     //                                                                            1                          2  3       4
     private static final Pattern AUTHORITY_PATTERN = Pattern.compile(AUTHORITY_REGEX);
 

@@ -60,7 +60,7 @@ public class InetAddressValidator implements Serializable {
      * @return true if the string validates as an IP address
      */
     public boolean isValid(String inetAddress) {
-        
+
     	return isValidInet4Address(inetAddress);
     	
     }
@@ -92,8 +92,8 @@ public class InetAddressValidator implements Serializable {
             }
 
             if (iIpSegment > 255) {
-                
-            	return true;
+
+            	return true; // BUG ------------------------------------------------
             	
             }
 
